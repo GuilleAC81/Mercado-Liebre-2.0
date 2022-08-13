@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('partials/head', {title: 'Accedé'}) %>
+<body>
+    
+    <%- include('partials/headerNavbar') %>
+    
+    <section>
+         <img src="/images/img-home-banner.jpg" alt="Cobra con todas las tarjertas" width="100%">
+    </section>
+
+    <main class="cuerpo">
+        <form action="/" method="get" class="cuerpo-registro">
+            
+            <div class="elemento-formulario">
+                <label for="usuario">Nombre de usuari@</label>
+                <input type="text" name="usuario" id="usuario" class="campo-formulario">
+            </div>            
+        
+            <div class="elemento-formulario">
+                <label for="password">Contraseña</label>
+                <input type="password" name="password" id="password" class="campo-formulario">
+            </div>
+            
+            <a href="/"><button class="boton-formulario">Enviar</button></a>
+            
+
+        </form>
+    </main>
+    
+    <br>
+
+    <%- include('./partials/footer.ejs') %>
+    
+</body>
+</html>

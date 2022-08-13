@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Include Head -->
+<%- include('partials/head', {title: user.user}) %>
+<body>
+	<!-- Header -->
+	<%- include('partials/headerNavbar') %>
+	<!-- /Header -->
+
+	<!-- product detail -->
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Detalle del Usuario: <%=user.user%></h2>
+			</div>
+		</div>
+		<div class="product-detail">
+			<div class="row">
+				<div class="col-12 col-lg-8">
+					<img src="/images/users/<%=user.image%>" alt="<%=user.name%>" class="product-detail-img">
+					<p class="product-detail-description">
+						<%=user.intereses%>
+					</p>
+				</div>
+				<div class="col-12 col-lg-4">
+					<article class="product-detail-info">
+						<h2 class="product-detail-title"><%=user.user%></h2>						
+							<p class="product-detail-price">
+								<%=user.name%>
+							</p>
+							<p class="product-detail-price">
+								<%=user.bornDate%>
+							</p>
+
+						<ul class="actions-list">
+							<li>
+								<i class="fas fa-credit-card"></i>
+								<p>Direccion: <%=user.address%></p>
+							</li>
+							<li>
+								<i class="fas fa-store"></i>
+								<p>E-Mail: <%=user.email%></p>
+							</li>
+						</ul>
+
+						<a href="#" class="buy-now-button">COMPRAR AHORA</a>
+						<hr>
+
+						<a href="/users/edit/<%=user.id%>" class="action-button edit">EDITAR USUARIO</a>
+						<form action="/users/<%=user.id%>?_method=delete" method="POST" style="display: inline-flex">
+							<button type="submit" class="action-button delete">ELIMINAR</button>
+						</form>
+					</article>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /product detail -->
+
+	<!-- footer -->
+	<%- include('partials/footer') %>
+	<!-- /footer -->
+
+</body>	
+</html>

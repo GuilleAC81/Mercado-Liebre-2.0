@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('partials/head', {title: 'Registrarse'}) %>
+<body>
+    
+    <%- include('partials/headerNavbar') %>
+    
+    <main class="cuerpo">
+        
+        <form action="/users/register" method="post" enctype="multipart/form-data" class="cuerpo-registro">
+
+            <div class="elemento-formulario">
+                <label for="name">Nombre y apellido</label>
+                <input type="text" name="name" id="name" class="campo-formulario" value= "<%= locals.userData ? userData.name : null %>" >
+                <!-- placeholder="Cosme Fulanito" required minlength="3" maxlength="30"> -->
+            </div>
+
+            <% if (locals.errors && errors.name) { %>
+                <div class="text-error">
+                    <%= errors.name.msg %> 
+                </div>
+            <% } %>
+
+            <div class="elemento-formulario">
+                <label for="user">Nombre de usuari@</label>
+                <input type="text" name="user" id="user" class="campo-formulario" value="<%= locals.userData ? userData.user : null %>"> 
+                <!--placeholder="LaloLanda13"  required minlength="3" maxlength="15" >    -->         
+            </div>
+            
+            <% if (locals.errors && errors.user) { %>
+                <div class="text-error">
+                    <%= errors.user.msg %> 
+                </div>
+            <% } %>
+            
+            <div class="elemento-formulario">
+                <label for="bornDate">Fecha de nacimiento</label required>
+                <input type="date" name="bornDate" id="bornDate" value="<%= locals.userData ? userData.bornDate : null %>" >
+            </div>
+
+            <% if (locals.errors && errors.bornDate) { %>
+                <div class="text-error">
+                    <%= errors.bornDate.msg %> 
+                </div>
+            <% } %>
+            
+            <div class="elemento-formulario">
+                <label for="address">Domicilio</label>
+                <input type="text" name="address" id="address" class="campo-formulario" value="<%= locals.userData ? userData.address : null %>"> 
+                <!-- placeholder="Calle Falsa 123"  required minlength="7" maxlength="30" >  -->              
+            </div>
+            
+            <% if (locals.errors && errors.address) { %>
+                <div class="text-error">
+                    <%= errors.address.msg %> 
+                </div>
+            <% } %>
+
+            <div class="elemento-formulario">
+                <label for="email">E-Mail</label>
+                <input type="email" name="email" id="email" class="campo-formulario" value="<%= locals.userData ? userData.email : null %>"> 
+                <!--placeholder="esteEsMi@email.com"  required minlength="7" maxlength="30">                 -->
+            </div>
+            
+            <% if (locals.errors && errors.email) { %>
+                <div class="text-error">
+                    <%= errors.email.msg %> 
+                </div>
+            <% } %>
+
+            <div class="elemento-formulario">
+                <label>Perfil del usuario </label>
+                <div class="checkbox" id="radio">
+                    <% let profiles = ['comprador','vendedor']; %>
+                    <% for(const profile of profiles){ %>
+
+                        <label for="<%= profile %>">
+                            <input type="radio" name= "perfil"  id="<%= profile %>" value="<%= profile %>" <%= locals.userData && (profile === userData.perfil) ? 'checked' : null %>  >
+                            <%= profile %>  
+                        </label>                    
+                        <% } %>  
+                    
+                </div>
+            </div>
+                        
+            <% if (locals.errors && errors.perfil) { %>
+                <div class="text-error">
+                    <%= errors.perfil.msg %> 
+                </div>
+            <% } %>
+
+            <div class="elemento-formulario">
+
+                <label>Categorías de interés</label>
+                
+                <%  let interests = ['electro','moda','hogar', 'jugueteria', 'vida-sana']; %>
+                
+                <% for (const oneInterest of interests) { %>
+                    <div class="checkbox">
+                        <input  type= "checkbox" 
+                                name= "intereses" 
+                                value= "<%= oneInterest %>" 
+                                id= "<%= oneInterest %>" 
+                                
+                                <% if (locals.userData && userData.intereses) { %>                                
+                                    <% for (const interest of userData.intereses ) { %>
+                                        <%= (interest === oneInterest) ? 'checked' : null %>
+                                    <% } %>
+                                <% } %>
+                            
+                        >
+
+                        </input>
+                        <label for = "<%= oneInterest %>">
+                            <% if (oneInterest == 'electro') { %>
+                                    Electro
+                                <% } else if (oneInterest == 'moda') { %>
+                                    Moda
+                                <% } else if (oneInterest == 'hogar') { %>
+                                    Hogar
+                                <% } else if (oneInterest == 'jugueteria') { %>
+                                    Juguetería
+                                <% } else if (oneInterest == 'vida-sana') { %>
+                                    Vida Sana
+                            <% } %>
+                            
+
+                        </label>
+                    </div>
+                
+                <% } %>
+            </div>
+
+            <div class="elemento-formulario">
+                <label>Foto de usuario</label>
+                <input type="file" name="image" accept=".jpg, .bmp, .png" class="image">
+            </div>
+
+                        
+            <% if (locals.errors && errors.image) { %>
+                <div class="text-error">
+                    <%= errors.image.msg %> 
+                </div>
+            <% } %>
+
+            <div class="elemento-formulario">
+                <label for="password">Contraseña</label>
+                <input type="password" name="password" id="password" class="campo-formulario"> <!-- required minlength="8"> -->
+            </div>
+
+            <% if (locals.errors && errors.password) { %>
+                <div class="text-error">
+                    <%= errors.password.msg %> 
+                </div>
+            <% } %>
+            
+            <div class="elemento-formulario">
+                <label for="confirmar">Confirmar contraseña</label>
+                <input type="password" name="confirmar" id="confirmar" class="campo-formulario" >
+                <!-- required minlength="8"> -->
+                
+            </div>
+
+            <button class="boton-formulario">Enviar</button>
+            <button type="reset" class="boton-formulario">Borrar</button>
+
+        </form>
+    </main>
+    
+    <br>
+
+    <%- include('./partials/footer.ejs') %>
+    
+</body>
+</html>
