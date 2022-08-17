@@ -22,11 +22,12 @@
 						<%=user.intereses%>
 					</p>
 				</div>
+				
 				<div class="col-12 col-lg-4">
 					<article class="product-detail-info">
-						<h2 class="product-detail-title"><%=user.user%></h2>						
+						<h2 class="product-detail-title"><%=user.name%></h2>						
 							<p class="product-detail-price">
-								<%=user.name%>
+								<%=user.user%> 
 							</p>
 							<p class="product-detail-price">
 								<%=user.bornDate%>
@@ -42,9 +43,6 @@
 								<p>E-Mail: <%=user.email%></p>
 							</li>
 						</ul>
-
-						<a href="#" class="buy-now-button">COMPRAR AHORA</a>
-						<hr>
 
 						<a href="/users/edit/<%=user.id%>" class="action-button edit">EDITAR USUARIO</a>
 						<form action="/users/<%=user.id%>?_method=delete" method="POST" style="display: inline-flex">
