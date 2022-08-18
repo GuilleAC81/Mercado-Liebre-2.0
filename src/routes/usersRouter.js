@@ -30,7 +30,10 @@ router.get('/:id', usersController.userDetail);
 router.get('/edit/:id', usersController.edit); 
 
 /*** Process edited user data ***/
-router.put('/edit/:id',upload.single('avatar'), usersController.update);
+router.put('/edit/:id',upload.single('image'), usersController.update);
+
+/*** User delete ***/
+router.delete('/delete/:id', usersController.destroy);
 
 
 module.exports = router;

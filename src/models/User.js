@@ -10,9 +10,11 @@ const User = {
 
 	newId: function()  {
 		let users = this.allUsers();
-		let lastUser = users.length;
-		return lastUser + 1;
-		
+		let lastUser = users.pop();
+		if (lastUser) {
+			return lastUser.id + 1;
+		}
+		return 1;
 	},
 
 	findByPk: function(id)  {
@@ -51,7 +53,7 @@ const User = {
 		};
 
 		users.push(newUser);
-		let usersJson = JSON.stringify(users);
+		let usersJson = JSON.stringify(users, null,  ' ');
 		fs.writeFileSync(this.database, usersJson);
 		return newUser;
 	},
@@ -79,7 +81,7 @@ const User = {
 		};
 
 		for(i=0; i<usersDataBase.length; i++){
-			if(users[i].id==idEdit){
+			if(usersDataBase[i].id==idEdit){
 				usersDataBase[i].name = userData.name;
 				usersDataBase[i].user = userData.user;
 				usersDataBase[i].email = userData.email;
@@ -92,11 +94,7 @@ const User = {
 			}
 		}
 
-		console.log(newUser)
-		console.log()
-		console.log(users)
-
-		let usersJson = JSON.stringify(usersDataBase);
+		let usersJson = JSON.stringify(usersDataBase, null,  ' ');
 		fs.writeFileSync(this.database, usersJson);
 		
 		return userData;
@@ -105,8 +103,9 @@ const User = {
 
 	delete: function(id)  {
 		let users = this.allUsers();
-		let finalUsers = users.filter(oneUser => oneUser.id !== id);
-		fs.writeFileSync(this.database, JSON.stringify(finalUsers));
+		let finalUsers = users.filter(user => user.id != id);
+		let usersJson = JSON.stringify(finalUsers, null,  ' ');
+		fs.writeFileSync(this.database, usersJson);
 		return finalUsers;
 	}
 }

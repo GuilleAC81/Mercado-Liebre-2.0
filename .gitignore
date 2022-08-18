@@ -44,3 +44,5 @@ Thumbs.db
 *.config
 node_modules/
 .vscode/
+sprint5/
+registro-login-completo/

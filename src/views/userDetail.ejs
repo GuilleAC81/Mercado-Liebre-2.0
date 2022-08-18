@@ -45,7 +45,7 @@
 						</ul>
 
 						<a href="/users/edit/<%=user.id%>" class="action-button edit">EDITAR USUARIO</a>
-						<form action="/users/<%=user.id%>?_method=delete" method="POST" style="display: inline-flex">
+						<form action="/users/delete/<%=user.id%>?_method=delete" method="POST" style="display: inline-flex">
 							<button type="submit" class="action-button delete">ELIMINAR</button>
 						</form>
 					</article>

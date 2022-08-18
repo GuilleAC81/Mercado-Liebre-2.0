@@ -6,9 +6,11 @@
     <%- include('partials/headerNavbar') %>
     
     <main class="cuerpo">
-        
+        <% if (!locals.userData) { %>
         <form action="/users/register" method="post" enctype="multipart/form-data" class="cuerpo-registro">
-
+        <% } else { %>
+        <form action="/users/edit/<%= userData.id %>?_method=PUT" method="post" enctype="multipart/form-data" class="cuerpo-registro">
+        <% } %>
             <div class="elemento-formulario">
                 <label for="name">Nombre y apellido</label>
                 <input type="text" name="name" id="name" class="campo-formulario" value= "<%= locals.userData ? userData.name : null %>" >
