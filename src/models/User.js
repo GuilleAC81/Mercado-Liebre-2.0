@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path')
+const bcryptjs = require('bcryptjs');
 
 const User = {
 	database: path.join(__dirname, '../data/usersDataBase.json'),
@@ -25,7 +26,7 @@ const User = {
 
 	findByField: function (field, text)  {
 		let users = this.allUsers();
-		let userFound = users.find(oneUser => oneUser[field] === text);
+		let userFound = users.find(oneUser => oneUser[field].toUpperCase() == text.toUpperCase());
 		return userFound;
 	},
 
@@ -34,9 +35,14 @@ const User = {
 		let users = this.allUsers();
 		let data = userData.body;
 		let image = userData.file;
+		let hashedPassword = bcryptjs.hashSync(data.password, 10);
 		
 		if(!data.intereses){
 			data.intereses = [];
+		}
+		if (data.intereses.length > 5){
+			let temp = data.intereses
+			data.intereses = [temp]
 		}
 
 		let newUser = {
@@ -47,8 +53,9 @@ const User = {
 			bornDate: data.bornDate,
 			address: data.address,
 			perfil: data.perfil,
+			admin: "no",
 			intereses: data.intereses,
-			password: data.password,
+			password: hashedPassword,
 			image: image.filename,
 		};
 
@@ -63,9 +70,15 @@ const User = {
 		let usersDataBase = this.allUsers();
 		let dataEdit = reqEdit.body;
 		let imageEdit = reqEdit.file;
+		let hashedPassword = bcryptjs.hashSync(dataEdit.password, 10);
 		
 		if(!dataEdit.intereses){
 			dataEdit.intereses = [];
+		};
+		
+		if (dataEdit.intereses.length > 5){
+			let temp = dataEdit.intereses
+			dataEdit.intereses = [temp]
 		}
 
 		let userData ={
@@ -76,7 +89,8 @@ const User = {
 			address: dataEdit.address,
 			perfil: dataEdit.perfil,
 			intereses: dataEdit.intereses,
-			password: dataEdit.password,
+			password: hashedPassword,
+			admin: dataEdit.admin,
 			image: imageEdit.filename,
 		};
 
@@ -88,6 +102,7 @@ const User = {
 				usersDataBase[i].bornDate = userData.bornDate;
 				usersDataBase[i].address = userData.address;
 				usersDataBase[i].perfil = userData.perfil;
+				usersDataBase[i].admin = userData.admin;
 				usersDataBase[i].intereses = userData.intereses;
 				usersDataBase[i].password = userData.password;
 				usersDataBase[i].image = userData.image;
@@ -107,6 +122,10 @@ const User = {
 		let usersJson = JSON.stringify(finalUsers, null,  ' ');
 		fs.writeFileSync(this.database, usersJson);
 		return finalUsers;
+	},
+
+	validatePassword: function(password,hash){
+		return bcryptjs.compareSync(password, hash)
 	}
 }
 

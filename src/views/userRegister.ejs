@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('partials/head', {title:  locals.userData ? 'Editando ' + userData.user : 'Registrarse' }) %>
+    <%- include('partials/head', {title: 'Registrarse' }) %>
 <body>
     
     <%- include('partials/headerNavbar') %>
     
     <main class="cuerpo">
-        <% if (!locals.userData) { %>
         <form action="/users/register" method="post" enctype="multipart/form-data" class="cuerpo-registro">
-        <% } else { %>
-        <form action="/users/edit/<%= userData.id %>?_method=PUT" method="post" enctype="multipart/form-data" class="cuerpo-registro">
-        <% } %>
             <div class="elemento-formulario">
                 <label for="name">Nombre y apellido</label>
                 <input type="text" name="name" id="name" class="campo-formulario" value= "<%= locals.userData ? userData.name : null %>" >
@@ -95,9 +91,7 @@
 
                 <label>Categorías de interés</label>
                 
-                <%  let interests = ['electro','moda','hogar', 'jugueteria', 'vida-sana']; %>
-                
-                <% for (const oneInterest of interests) { %>
+                <% for (const oneInterest of categories) { %>
                     <div class="checkbox">
                         <input  type= "checkbox" 
                                 name= "intereses" 
@@ -116,9 +110,9 @@
                         <label for = "<%= oneInterest %>">
                             <% if (oneInterest == 'electro') { %>
                                     Electro
-                                <% } else if (oneInterest == 'moda') { %>
+                                <% } else if (oneInterest == 'indumentaria') { %>
                                     Moda
-                                <% } else if (oneInterest == 'hogar') { %>
+                                <% } else if (oneInterest == 'hogar!') { %>
                                     Hogar
                                 <% } else if (oneInterest == 'jugueteria') { %>
                                     Juguetería

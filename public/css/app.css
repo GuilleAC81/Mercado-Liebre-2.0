@@ -108,7 +108,11 @@ hr {
   color: var(--gray);
   cursor: pointer;
 }
-
+.avatar{
+  width: 50px;
+  border-radius: 50%;
+  padding: 2px;
+}
 
 /*====== Main Navbar ======*/
 .btn-toggle-navbar {
@@ -445,6 +449,7 @@ label{
 
 .elemento-formulario label{
   display: block;
+  font-weight: bold;
 }
 
 .campo-formulario{
@@ -458,8 +463,13 @@ label{
 #radio{
   justify-content: space-evenly;
 }
+
 #radio div{
   display: flex;
+}
+
+.remember{
+  justify-content: left;
 }
 
 .foto{

@@ -1,6 +1,8 @@
 // ************ Require's ************
 const express = require('express');
 const router = express.Router();
+const guestMDW = require('../middlewares/guestMDW')
+const userMDW = require('../middlewares/userMDW')
 
 /***  Middlewares ***/
 
@@ -12,22 +14,25 @@ const upload = require('../middlewares/userMulterMDW')
 const usersController = require('../controllers/usersController');
 
 /*** GET ALL USERS ***/
-router.get('/', usersController.index);
+router.get('/', guestMDW, usersController.index);
 
 /*** Register new user ***/
-router.get('/register', usersController.register);
+router.get('/register', userMDW, usersController.register);
 
 /*** Process new user data ***/
 router.post('/register',upload.single('image'), validations, usersController.create);
 
 /*** Login ***/
-router.get('/login', usersController.login);
+router.get('/login', userMDW, usersController.login);
 
-/*** User detailed info ***/ 
-router.get('/:id', usersController.userDetail);
+/*** Process Login ***/
+router.post('/login', usersController.validateLogin);
+
+/*** Process Logout ***/
+router.get('/logout', usersController.logout);
 
 /*** Edit user ***/ 
-router.get('/edit/:id', usersController.edit); 
+router.get('/edit/:id', guestMDW, usersController.edit); 
 
 /*** Process edited user data ***/
 router.put('/edit/:id',upload.single('image'), usersController.update);
@@ -35,5 +40,7 @@ router.put('/edit/:id',upload.single('image'), usersController.update);
 /*** User delete ***/
 router.delete('/delete/:id', usersController.destroy);
 
+/*** User detailed info ***/ 
+router.get('/:id', guestMDW, usersController.userDetail);
 
 module.exports = router;

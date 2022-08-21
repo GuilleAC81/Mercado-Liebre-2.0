@@ -31,14 +31,21 @@
 				<li><a href="/products">Todos los productos</a></li>
 				<li><a href="#">Ofertas</a></li>
 				<li><a href="#">Tiendas Oficiales</a></li>
-				<li><a href="/products/create">Vender</a></li>
 				<li><a href="#">Ayuda</a></li>
+				<% if (locals.logged && locals.dataLog.perfil == "vendedor") { %>
+					<li><a href="/products/create">Vender</a></li>
+				<% } %>
 			</ul>
 
 			<ul class="right-navbar">
-				<li><a href="/users/register">Creá tu cuenta <i class="far fa-address-card"></i></a></li>
-				<li><a href="/users/login">Ingresá <i class="fas fa-sign-in-alt"></i></a></li>
-				<li><a href="#">Mis compras <i class="fas fa-shopping-basket"></i></a></li>
+				<% if (locals.logged) { %>
+					<li><a href="/users/+<%= locals.dataLog.id  %>">Bienvenido: <%= locals.dataLog.user %>   <i class="far fa-address-card"></i></a></li>
+					<li><a href="/users/logout">Logout <i class="fas fa-sign-in-alt"></i></a></li>
+					<li><a href="#">Mis compras <i class="fas fa-shopping-basket"></i></a></li>
+				<% } else { %>
+					<li><a href="/users/register">Creá tu cuenta <i class="far fa-address-card"></i></a></li>
+					<li><a href="/users/login">Ingresá <i class="fas fa-sign-in-alt"></i></a></li>				
+				<% } %>				
 			</ul>
 		</nav>
 	</div>

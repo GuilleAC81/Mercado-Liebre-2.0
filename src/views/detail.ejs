@@ -50,13 +50,17 @@
 							</li>
 						</ul>
 
+						<% if (locals.logged && ((locals.dataLog.admin == "si")||(locals.dataLog.perfil=="comprador"))) { %>
 						<a href="#" class="buy-now-button">COMPRAR AHORA</a>
 						<hr>
+						<% } %> 
 
+						<% if (locals.logged && ((locals.dataLog.admin == "si")||(locals.dataLog.perfil=="vendedor"))) { %>
 						<a href="/products/edit/<%=product.id%>" class="action-button edit">EDITAR PRODUCTO</a>
 						<form action="/products/<%=product.id%>?_method=delete" method="POST" style="display: inline-flex">
 							<button type="submit" class="action-button delete">ELIMINAR</button>
 						</form>
+						<% } %> 
 					</article>
 				</div>
 			</div>

@@ -4,6 +4,7 @@ const path = require('path');
 const methodOverride =  require('method-override'); // Pasar poder usar los métodos PUT y DELETE
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const loggedMDW = require('./middlewares/loggedMDW');
 
 //************ Express *************
 const app = express();
@@ -26,6 +27,7 @@ resave: false,
 saveUninitialized: false,
 }));
 app.use(cookieParser());
+app.use(loggedMDW)
 
 
 // ***** Sistema de ruteo **********

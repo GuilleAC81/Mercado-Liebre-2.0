@@ -9,11 +9,12 @@
   "perfil": "vendedor",
   "intereses": [
    "electro",
-   "hogar",
+   "hogar!",
    "vida-sana"
   ],
-  "password": "zxcasdqwe",
-  "image": "img-user1658979994458.jpg"
+  "password": "$2a$10$p3PDgg/YUlT0Gm6RqcFfR.979ZUQ2WPX3hUUOb6.272DYHRmw.9bO",
+  "image": "img-user1660968491868.jpg",
+  "admin": "no"
  },
  {
   "id": 2,
@@ -24,11 +25,11 @@
   "address": "Winterfell 123",
   "perfil": "comprador",
   "intereses": [
-   "hogar",
+   "hogar!",
    "vida-sana"
   ],
-  "password": "asdasdasd",
-  "image": "img-user1658980056195.jpg"
+  "password": "$2a$10$/7IqEqsUOZR4PjDpU18VK.H5IX2J9xNC0KPwuzNk1Y6MFx7ChCGpm",
+  "image": "img-user1660968556765.jpg"
  },
  {
   "id": 3,
@@ -39,11 +40,12 @@
   "address": "Des Moines 678",
   "perfil": "comprador",
   "intereses": [
-   "moda",
+   "indumentaria",
+   "hogar!",
    "vida-sana"
   ],
-  "password": "qsceszadwx",
-  "image": "img-user1658981301132.jpg"
+  "password": "$2a$10$KdiMfIGturwW2o0ld2./tekVVxNtMkKVUZYocPxXvC6TbMcu8agD2",
+  "image": "img-user1660968609495.jpg"
  },
  {
   "id": 4,
@@ -54,11 +56,15 @@
   "address": "Arcadia 2413",
   "perfil": "comprador",
   "intereses": [
-   "moda",
+   "electro",
+   "indumentaria",
+   "hogar!",
+   "jugueteria",
    "vida-sana"
   ],
-  "password": "qazwsxedc",
-  "image": "img-user1658990443913.jpg"
+  "password": "$2a$10$nGsWl0WO.YoOaT4TVNHJ9uB8rzQpmdn9aPcz4Fmwxf2IKWfpCH.9a",
+  "image": "img-user1660968681032.jpg",
+  "admin": "no"
  },
  {
   "id": 5,
@@ -70,11 +76,12 @@
   "perfil": "vendedor",
   "intereses": [
    "electro",
-   "hogar",
+   "hogar!",
    "jugueteria"
   ],
-  "password": "iamironman",
-  "image": "img-user1658992643239.jpg"
+  "password": "$2a$10$A1BDvuRJP8j1eok1AE7Dee1waWWGH9OYbExkTFME.750lj0V5Ijp2",
+  "image": "img-user1660968750660.jpg",
+  "admin": "no"
  },
  {
   "id": 6,
@@ -85,12 +92,13 @@
   "address": "Earls Road 567",
   "perfil": "comprador",
   "intereses": [
-   "moda",
-   "hogar",
+   "hogar!",
+   "jugueteria",
    "vida-sana"
   ],
-  "password": "zxczxczxc",
-  "image": "img-user1658993321834.png"
+  "password": "$2a$10$wS4OcJbkDpO32XY0j.3uN..7tpV8Cu9CTZTc9JzTpzw3q.lNtX4z6",
+  "image": "img-user1660968832691.png",
+  "admin": "no"
  },
  {
   "id": 7,
@@ -102,11 +110,13 @@
   "perfil": "vendedor",
   "intereses": [
    "electro",
-   "moda",
+   "indumentaria",
+   "hogar!",
    "jugueteria"
   ],
-  "password": "666666666",
-  "image": "img-user1659025735060.jpg"
+  "password": "$2a$10$JRLxVi81fnifdU9S2/4FquyxzSgDTeS3fA5TKXOXnBmRWlG21yxN.",
+  "image": "img-user1660968898302.jpg",
+  "admin": "no"
  },
  {
   "id": 8,
@@ -118,10 +128,12 @@
   "perfil": "vendedor",
   "intereses": [
    "electro",
-   "moda"
+   "hogar!",
+   "jugueteria"
   ],
-  "password": "wsxwsxwsx",
-  "image": "img-user1659027413139.jpg"
+  "password": "$2a$10$6jM/ABwsOgrr6i3ZZLP8fedtLV6GaAagbkZo4w5C7Eau0TwxAxl4e",
+  "image": "img-user1660968939498.jpg",
+  "admin": "no"
  },
  {
   "id": 9,
@@ -136,8 +148,9 @@
    "jugueteria",
    "vida-sana"
   ],
-  "password": "IamTheChosenOne",
-  "image": "img-user1659304356093.jpg"
+  "password": "$2a$10$NQ9omDfUd7KtFNr0ert77udKktXWWlYbiIHRZ4roDjsxtU5WU4kce",
+  "image": "img-user1660968971991.jpg",
+  "admin": "no"
  },
  {
   "id": 10,
@@ -149,10 +162,10 @@
   "perfil": "comprador",
   "intereses": [
    "electro",
-   "hogar",
    "jugueteria"
   ],
-  "password": "123123123",
-  "image": "img-user1660367618004.jpg"
+  "password": "$2a$10$FvVVRn2uK4RUDTKIlOXHAeq8qQ2dE8GbsF7HOCHlIY1aUSkvtmmbm",
+  "image": "img-user1660969064390.jpg",
+  "admin": "si"
  }
 ]

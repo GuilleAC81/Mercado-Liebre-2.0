@@ -10,18 +10,29 @@
     </section>
 
     <main class="cuerpo">
-        <form action="/" method="get" class="cuerpo-registro">
+        <form action="/users/login" method="post" class="cuerpo-registro">
             
             <div class="elemento-formulario">
-                <label for="usuario">Nombre de usuari@</label>
-                <input type="text" name="usuario" id="usuario" class="campo-formulario">
-            </div>            
+                <label for="user">Ingrese nombre de usuario</label>
+                <input type="text" name="user" id="user" class="campo-formulario">
+            </div>
+            <% if (locals.errors && errors.user) { %>
+                <div class="text-error">
+                    <%= errors.user.msg %>
+                </div>
+            <% } %>            
         
             <div class="elemento-formulario">
                 <label for="password">Contraseña</label>
                 <input type="password" name="password" id="password" class="campo-formulario">
             </div>
             
+            <div class="elemento-formulario">
+                    <div class="checkbox remember" >
+                        <input  type="checkbox" name="rememberMe" id="rememberMe">
+                        <label for="rememberMe">Recordarme</label>
+                    </div>
+            </div>            
             <a href="/"><button class="boton-formulario">Enviar</button></a>
             
 
